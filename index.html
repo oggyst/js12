@@ -8,12 +8,23 @@
     <title>Document</title>
     <script src="./js/script.js"></script>
 </head>
+
 <body>
     <div class="st-input-holder">
         <input type="number" name="collumn" id="numberOfColumns" placeholder="Enter collumn number">
         <input type="number" name="row" id="numberOfRows" placeholder="Enter row number">
+        <br>
+        <span>Chosse directon:</span>
+        <form>
+            <select id="direction">
+                <option value="first">Right- bottom - left - top</option>
+                <option value="second">Bottom - right - top - left</option>
+            </select>
+        </form>
     </div>
-    <button class = "st-submit" onclick="document.getElementsByClassName('st-text-holder').innerHTML = run(9, 99)">Run process</button>
+    <button class="st-submit" onclick="document.getElementsByClassName('st-text-holder').innerHTML = run(9, 99)">Run
+        process</button>
     <p class="st-text-holder"></p>
 </body>
+
 </html>

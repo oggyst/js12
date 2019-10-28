@@ -2,6 +2,7 @@ function run(max , min)
 {   
     const intNumberOfRows = document.getElementById('numberOfColumns').value;
     const intNumberOfColumns = document.getElementById('numberOfRows').value;
+    const strDirection = document.getElementById('direction').value;
     if(intNumberOfRows == "" || intNumberOfColumns == "" )
     {
         alert('Please fill required fields.');
@@ -47,32 +48,69 @@ function run(max , min)
         
         while((intTop < intBottom && intLeft < intRight)) 
         {
-            for (i = intLeft; i < intRight; i++) 
-            { 
-                document.write(arrMatrix[intTop][i] + ", "); 
-            } 
-            intTop++; 
-            for (i = intTop; i < intBottom; i++) 
-            { 
-                document.write(arrMatrix[i][intRight - 1] + ", "); 
-            } 
-            intRight--; 
-            if (intTop < intBottom)
-            { 
-                for (i = intRight - 1; i >= intLeft; i--) 
+            if(strDirection == "first")
+            {
+                for (i = intLeft; i < intRight; i++) 
                 { 
-                    document.write(arrMatrix[intBottom - 1][i] + ", "); 
+                    document.write(arrMatrix[intTop][i] + ", "); 
                 } 
-                intBottom--; 
-            } 
-            if (intLeft < intRight) 
-            { 
-                for (i = intBottom - 1; i >= intTop; i--) 
+                intTop++; 
+                for (i = intTop; i < intBottom; i++) 
+                { 
+                    document.write(arrMatrix[i][intRight - 1] + ", "); 
+                } 
+                intRight--; 
+                if (intTop < intBottom)
+                { 
+                    for (i = intRight - 1; i >= intLeft; i--) 
+                    { 
+                        document.write(arrMatrix[intBottom - 1][i] + ", "); 
+                    } 
+                    intBottom--; 
+                } 
+                if (intLeft < intRight) 
+                { 
+                    for (i = intBottom - 1; i >= intTop; i--) 
+                    { 
+                        document.write(arrMatrix[i][intLeft] + ", "); 
+                    } 
+                    intLeft++; 
+                }
+            } else 
+            {
+                for (i = intTop; i < intBottom; i++) 
                 { 
                     document.write(arrMatrix[i][intLeft] + ", "); 
+                    
+                    console.log("first loop" + arrMatrix[i][intLeft] )
                 } 
                 intLeft++; 
-            }
+                for (i = intLeft; i < intRight; i++) 
+                { 
+                    document.write(arrMatrix[intBottom - 1][i] + ", "); 
+                    console.log("second loop" + arrMatrix[intBottom - 1][i])
+                } 
+                intBottom--; 
+               
+                if (intLeft < intRight) 
+                { 
+                    for (i = intBottom - 1; i > intTop; i--) 
+                    { 
+                        document.write(arrMatrix[i][intRight-1] + ", "); 
+                        console.log("third loop " +arrMatrix[i][intRight-1])
+                    } 
+                    intRight--; 
+              }
+              if (intTop < intBottom)
+              { 
+                  for (i = intRight - 1; i > intLeft; i--) 
+                  { 
+                      document.write(arrMatrix[intTop+1][i] + ", "); 
+                      
+                  } 
+                  intTop++; 
+                }
+              } 
         }
     }
 }
